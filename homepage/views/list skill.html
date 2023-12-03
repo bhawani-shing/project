@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skills</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f7f7f7;
+        }
+
+        #skills-container {
+            max-width: 600px;
+            margin: auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin-bottom: 20px;
+        }
+
+        li {
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+            font-size: 18px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            animation: slideIn 0.5s ease-in-out;
+        }
+
+        form {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-bottom: 10px;
+            font-size: 16px;
+            color: #333;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            box-sizing: border-box;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(-20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="skills-container">
+        <h1>Skills</h1>
+        <ul id="skills-list">
+            <!-- Skills will be dynamically added here -->
+        </ul>
+
+        <form id="skills-form">
+            <label for="skillInput">Add Skills (comma-separated):</label>
+            <input type="text" id="skillInput" placeholder="Enter your skills" required>
+            <button type="button" onclick="addSkills()">Add Skills</button>
+        </form>
+    </div>
+
+    <script>
+        function addSkills() {
+            const skillInput = document.getElementById('skillInput');
+            const skillsList = document.getElementById('skills-list');
+
+            // Ensure the input is not empty
+            if (skillInput.value.trim() !== '') {
+                // Split the input into an array of skills
+                const newSkills = skillInput.value.split(',');
+
+                // Add each skill to the list
+                newSkills.forEach(skill => {
+                    const listItem = document.createElement('li');
+                    listItem.textContent = skill.trim();
+                    skillsList.appendChild(listItem);
+                });
+
+                // Clear the input field
+                skillInput.value = '';
+            }
+        }
+    </script>
+
+</body>
+</html>

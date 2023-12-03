@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class/Lecture Upload</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f7f7f7;
+        }
+
+        #lecture-container {
+            max-width: 600px;
+            margin: auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-bottom: 10px;
+            font-size: 16px;
+            color: #333;
+        }
+
+        select, input[type="text"], input[type="file"] {
+            width: 100%;
+            padding: 12px;
+            box-sizing: border-box;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .video-list {
+            margin-top: 30px;
+        }
+
+        .video-item {
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .video-item:hover {
+            background-color: #f4f4f4;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="lecture-container">
+        <h1>Take or Give Classes/Lectures</h1>
+
+        <form id="lecture-form" enctype="multipart/form-data">
+            <label for="subject">Select Subject:</label>
+            <select id="subject" name="subject" required>
+                <option value="CS">Computer Science</option>
+                <option value="maths">Maths</option>
+                <option value="coding">Coding Language</option>
+                <option value="dance">Dance</option>
+                <option value="cooking">Cooking</option>
+                <!-- Add more subjects as needed -->
+            </select>
+
+            <label for="teacherName">Teacher Name:</label>
+            <input type="text" id="teacherName" name="teacherName" required>
+
+            <label for="videoFile">Upload Video File:</label>
+            <input type="file" id="videoFile" name="videoFile" accept="video/*" required>
+
+            <button type="button" onclick="submitLecture()">Submit Lecture</button>
+        </form>
+
+        <div class="video-list">
+            <h2>Uploaded Videos</h2>
+            <div class="video-item" onclick="watchVideo('CS', 'John Doe', 'video1.mp4')">Computer Science by John Doe</div>
+            <div class="video-item" onclick="watchVideo('Maths', 'Jane Smith', 'video2.mp4')">Maths by Jane Smith</div>
+            <!-- Add more video items as needed -->
+        </div>
+    </div>
+
+    <script>
+        function submitLecture() {
+            // Add JavaScript logic to handle form submission
+            // You can use XMLHttpRequest or fetch API to send data to the server
+            // For simplicity, I'm just displaying an alert here
+            alert('Lecture submitted successfully!');
+        }
+
+        function watchVideo(subject, teacher, videoFile) {
+            // Add logic to handle video playback, e.g., redirect to a video player page
+            // For simplicity, I'm just displaying an alert here
+            alert(`Watching ${subject} by ${teacher} - ${videoFile}`);
+        }
+    </script>
+
+</body>
+</html>

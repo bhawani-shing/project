@@ -1,0 +1,24 @@
+/* Your existing CSS code */
+
+.box {
+    background-color: #ecf0f1;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 15px;
+    width: 300px;
+}
+
+/* Additional styles for subpages */
+
+.subpage {
+    padding: 20px;
+}
+
+.subpage h2 {
+    color: #2c3e50;
+}
+
+.subpage p {
+    color: #555;
+}

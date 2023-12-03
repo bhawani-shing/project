@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notification Page</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('background.jpg'); /* Add the path to your background image */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: #fff;
+        }
+        body {
+            background-image: url(a2.jpg); /* Replace 'sea_picture.jpg' with the path to your sea picture */
+            background-size: cover;
+            background-position: center;
+            font-family: Arial, sans-serif;
+            color: #fff;
+            margin: 0;
+            padding: 20px;
+        }
+
+        #navbar {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 20px;
+            background-color: rgba(0, 0, 0, 0.5);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        #nav-buttons {
+            display: flex;
+            align-items: center;
+        }
+
+        #nav-buttons a {
+            margin-right: 15px;
+            background-color: #3498db;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            text-decoration: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        #nav-buttons a:hover {
+            background-color: #2980b9;
+        }
+
+        #sign-out {
+            color: #4CAF50;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        #notification-content {
+            max-width: 600px;
+            margin: 80px auto; /* adjust margin to leave space for the fixed notification bar */
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .notification-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .notification-item {
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .notification-item:hover {
+            background-color: #f4f4f4;
+        }
+
+        .update {
+            background-color: #3498db;
+            color: #fff;
+        }
+
+        .announcement {
+            background-color: #e74c3c;
+            color: #fff;
+        }
+
+        .suggestion {
+            background-color: #2ecc71;
+            color: #fff;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="navbar">
+        <div id="nav-buttons">
+            <a href="#home">Home</a>
+            <a href="#profile">Profile</a>
+            <a href="#list-skills">List Skills</a>
+            <a href="#e-library">E-Library</a>
+            <a href="#workshop-class">Workshop/Class</a>
+        </div>
+        <div>
+            <div id="sign-out" onclick="signOut()">Sign Out</div>
+        </div>
+    </div>
+
+    <div id="notification-content">
+        <h1>Your Notifications</h1>
+
+        <ul class="notification-list" id="notification-list">
+            <!-- Notifications will be dynamically added here -->
+        </ul>
+    </div>
+
+    <script>
+        // Simulated data for notifications
+        const notifications = [
+            { type: 'update', message: 'Major system update', timestamp: '2023-12-01 08:30' },
+            { type: 'announcement', message: 'Important announcement', timestamp: '2023-12-02 12:45' },
+            { type: 'suggestion', message: 'Suggestion from someone', timestamp: '2023-12-03 15:20' },
+            // Add more notifications as needed
+        ];
+
+        // Display notifications on page load
+        window.onload = function () {
+            displayNotifications();
+        };
+
+        function displayNotifications() {
+            const notificationList = document.getElementById('notification-list');
+
+            // Clear previous notifications
+            notificationList.innerHTML = '';
+
+            // Display the fetched notifications
+            notifications.forEach(notification =>
+            {
+                const listItem = document.createElement('li');
+                listItem.classList.add('notification-item', notification.type);
+                listItem.innerHTML = `
+                    <span>${notification.message}</span>
+                    <span>${notification.timestamp}</span>
+                `;
+                notificationList.appendChild(listItem);
+                });
+            }
+            
+            function signOut() {
+                // Implement logic for signing out (redirect to sign-in page, clear session, etc.)
+                // For simplicity, I'm just displaying an alert here
+                alert('Signed out!');
+            }
+            
+            // Add logic for navigating to each page
+            document.getElementById('nav-buttons').addEventListener('click', function(event) {
+                const target = event.target;
+                if (target.tagName === 'A') {
+                    event.preventDefault(); // Prevent default behavior of anchor tags
+                    navigateToPage(target.getAttribute('href'));
+                }
+            });
+            
+            function navigateToPage(page) {
+                // Implement logic to navigate to the specified page
+                alert(`Navigating to ${page}`);
+            }
+            </script>
+            
+            </body>
+            </html>
+            

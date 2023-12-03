@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="homrage.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('background.jpg'); /* Add the path to your background image */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: #fff;
+            /* overflow: hidden; Remove or change this line */
+        }
+        
+        #navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: rgba(0, 0, 0, 0.8);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        #sign-out {
+            color: #e74c3c;
+            cursor: pointer;
+            font-weight: bold;
+            transition: color 0.3s ease-in-out;
+        }
+
+        #sign-out:hover {
+            color: #c0392b; /* Darker shade on hover */
+        }
+
+        #nav-links {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+
+        #nav-links a {
+            margin-bottom: 20px;
+            background-color: #3498db;
+            color: #fff;
+            padding: 15px 20px;
+            border: none;
+            text-decoration: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-weight: bold;
+            text-align: center;
+            transition: background-color 0.3s ease-in-out;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        #nav-links a:hover {
+            background-color: #2980b9;
+        }
+
+        #notification-badge {
+            background-color: #e74c3c;
+            color: #fff;
+            padding: 5px 8px;
+            border-radius: 50%;
+            margin-left: 5px;
+        }
+
+        #content {
+            margin-top: 60px; /* Adjust margin to leave space for the fixed navbar */
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="navbar">
+        <div>
+            <div id="sign-out" onclick="signOut()"><a href="signout.html">sign out</a></div>
+        </div>
+    </div>
+
+    <div id="content">
+        <h1>Welcome to Your Creative Home Page</h1>
+        <p>This is the content of your home page. You can navigate to different pages using the links above.</p>
+        <!-- Add more content as needed -->
+        <div id="nav-links">
+            <a href="profile.html">Profile</a>
+            <a href="list skill.html">List Skills</a>
+            <a href="e-lib.html">E-Library</a>
+            <a href="workshop class.html">Workshop/Class</a>
+            <a href="upload.html">Upload</a>
+            <a href="notification.html">Notifications<span id="notification-badge">3</span></a>
+        </div>
+    </div>
+
+    <script>
+        function signOut() {
+            // Implement logic for signing out (redirect to sign-in page, clear session, etc.)
+            // For simplicity, I'm just displaying an alert here
+            alert('Signed out!');
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Library</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f7f7f7;
+        }
+
+        #library-container {
+            max-width: 800px;
+            margin: auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-bottom: 10px;
+            font-size: 16px;
+            color: #333;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            box-sizing: border-box;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        select {
+            width: 100%;
+            padding: 12px;
+            box-sizing: border-box;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .book-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .book-item {
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .book-item:hover {
+            background-color: #f4f4f4;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="library-container">
+        <h1>E-Library</h1>
+
+        <form id="search-form">
+            <label for="search">Search by Subject or Book Name:</label>
+            <input type="text" id="search" name="search" placeholder="Enter subject or book name">
+
+            <label for="sort">Sort by:</label>
+            <select id="sort" name="sort">
+                <option value="alphabetical">Alphabetical Order</option>
+                <option value="time">Time</option>
+            </select>
+
+            <button type="button" onclick="searchBooks()">Search</button>
+        </form>
+
+        <ul class="book-list" id="book-list">
+            <!-- Books will be dynamically added here -->
+        </ul>
+    </div>
+
+    <script>
+        function searchBooks() {
+            const searchTerm = document.getElementById('search').value;
+            const sortOption = document.getElementById('sort').value;
+            const bookList = document.getElementById('book-list');
+
+            // Fetch books based on search and sort criteria (you would fetch this from a server in a real application)
+            const books = fetchBooks(searchTerm, sortOption);
+
+            // Clear previous book list
+            bookList.innerHTML = '';
+
+            // Display the fetched books
+            books.forEach(book => {
+                const listItem = document.createElement('li');
+                listItem.classList.add('book-item');
+                listItem.textContent = book;
+                listItem.addEventListener('click', () => openBook(book));
+                bookList.appendChild(listItem);
+            });
+        }
+
+        function fetchBooks(searchTerm, sortOption) {
+            // Simulated book data (replace this with actual book data)
+            const books = [
+                'Introduction to Computer Science',
+                'Mathematics for Beginners',
+                'Coding in JavaScript',
+                'Learn to Dance: Basics',
+                'The Art of Cooking',
+                // Add more books as needed
+            ];
+
+            // Filter books based on search term
+            const filteredBooks = searchTerm
+                ? books.filter(book => book.toLowerCase().includes(searchTerm.toLowerCase()))
+                : books;
+
+            // Sort books based on the selected option
+            const sortedBooks = sortOption === 'alphabetical'
+                ? filteredBooks.sort()
+                : filteredBooks;  // For simplicity, time-based sorting is not implemented here
+
+            return sortedBooks;
+        }
+
+        function openBook(book) {
+            // Implement logic to open and display the selected book
+            // For simplicity, I'm just displaying an alert here
+            alert(`Opening book: ${book}`);
+        }
+    </script>
+
+</body>
+</html>
